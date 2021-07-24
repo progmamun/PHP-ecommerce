@@ -3,9 +3,9 @@
         <div class="row">
             <div class="col-md-3">
                 <?php
-                    $db = new Database();
-                    $db->select('options','site_name,footer_text,site_desc,contact_phone,contact_email,contact_address',null,null,null,null);
-                    $footer = $db->getResult();  ?>
+$db = new Database();
+$db->select('options', 'site_name,footer_text,site_desc,contact_phone,contact_email,contact_address', null, null, null, null);
+$footer = $db->getResult();?>
                 <h3><?php echo $footer[0]['site_name']; ?></h3>
                 <p><?php echo $footer[0]['site_desc']; ?></p>
             </div>
@@ -13,14 +13,14 @@
                 <h3>Categories</h3>
                 <ul class="menu-list">
                     <?php
-                    $db = new Database();
-                    $db->select('sub_categories','*',null,'cat_products > 0 AND show_in_footer ="1"',null,null);
-                    $result = $db->getResult();
-                    if(count($result) > 0){
-                        foreach($result as $res){ ?>
+$db = new Database();
+$db->select('sub_categories', '*', null, 'cat_products > 0 AND show_in_footer ="1"', null, null);
+$result = $db->getResult();
+if (count($result) > 0) {
+    foreach ($result as $res) {?>
                             <li><a href="category.php?cat=<?php echo $res['sub_cat_id']; ?>"><?php echo $res['sub_cat_title']; ?></a></li>
-                        <?php    }
-                    } ?>
+                        <?php }
+}?>
                 </ul>
             </div>
             <div class="col-md-3">
@@ -35,19 +35,19 @@
             <div class="col-md-3">
                 <h3>Contact Us</h3>
                 <ul class="menu-list">
-                    <?php if(!empty($footer[0]['contact_address'])){ ?>
+                    <?php if (!empty($footer[0]['contact_address'])) {?>
                         <li><i class="fa fa-home" ></i><span>: <?php echo $footer[0]['contact_address']; ?></span></li>
-                    <?php } ?>
-                    <?php if(!empty($footer[0]['contact_phone'])){ ?>
+                    <?php }?>
+                    <?php if (!empty($footer[0]['contact_phone'])) {?>
                         <li><i class="fa fa-phone" ></i><span>: <?php echo $footer[0]['contact_phone']; ?></span></li>
-                    <?php } ?>
-                    <?php if(!empty($footer[0]['contact_email'])){ ?>
+                    <?php }?>
+                    <?php if (!empty($footer[0]['contact_email'])) {?>
                         <li><i class="fa fa-envelope" ></i><span>: <?php echo $footer[0]['contact_email']; ?></span></li>
-                    <?php } ?>
+                    <?php }?>
                 </ul>
             </div>
             <div class="col-md-12">
-                <span><?php echo $footer[0]['footer_text'] ?> | Created by <a href="https://www.yahoobaba.net" target="_blank">YahooBaba</a></span>
+                <span><?php echo $footer[0]['footer_text'] ?> | Created by <a href="https://progmamun.com/" target="_blank">Al Mamun Khan</a></span>
             </div>
         </div>
     </div>
